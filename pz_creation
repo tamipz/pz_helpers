@@ -1,0 +1,22 @@
+function mono_create() {
+	cd ~/Developments/mono
+	mkdir -p packages/$1
+
+	for arg in "$@"; do
+		case $arg in
+			app|lib|migration|testkit|lambda|page-app|page-lib)
+				pz create -t $arg $1
+				mv packages/$1-$arg packages/$1
+				;;
+			types)
+				pz create -t lib $1-types
+                        	mv packages/$1-types packages/$1
+				;;
+			*)
+				echo "Unknown: $arg"
+				;;
+		esac
+	done	
+	cd - > /dev/null
+}
+

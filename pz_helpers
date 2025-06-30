@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function mono_install() {
+	cd ~/Developments/mono/packages/$1	
+	npm install
+	cd - > /dev/null
+}
+
+function mono_test() {
+        cd ~/Developments/mono/packages/$1
+        npm run test
+        cd - > /dev/null
+}       
+
