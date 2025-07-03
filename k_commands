@@ -1,0 +1,20 @@
+alias k=kubectl
+
+# short alias to set/show context/namespace (only works for bash and bash-compatible shells, current context to be set before using kn to set namespace)
+alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'
+alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
+
+alias k:p="kubectl get pods"
+alias k:all_p="kubectl get pods --all-namespaces"
+alias k:running_p="kubectl get pods --field-selector=status.phase=Running"
+
+alias k:logs="kubectl logs -f "
+
+alias k:nodes="kubectl get nodes"
+
+alias k:cs="kubectl config get-contexts"
+alias k:c="kubectl config current-context"
+alias k:sc="kubectl config use-context "
+alias k:services="kubectl get services --sort-by=.metadata.name"
+
+
